@@ -1,0 +1,25 @@
+<p>admin-home works!</p>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button" (click)="getMovies()">get all movies</button>
+    <button class="btn btn-primary" type="button">Button</button>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (movie of MoviesList; track $index) {
+    <div class="col">
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h5 class="card-title"> {{ movie.name }} </h5>
+                <p class="card-text"> {{ movie.description }} </p>
+
+            </div>
+        </div>
+
+    </div>
+    }
+
+</div>
+
