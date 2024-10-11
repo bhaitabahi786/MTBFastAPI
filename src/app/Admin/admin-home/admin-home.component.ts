@@ -1,10 +1,13 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { CreateMovieComponent } from "../create-movie/create-movie.component";
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AddPriceAndTimeComponent } from '../add-price-and-time/add-price-and-time.component';
 
 @Component({
   selector: 'app-admin-home',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, CreateMovieComponent,RouterLink,RouterLinkActive,AddPriceAndTimeComponent],
   templateUrl: './admin-home.component.html',
   styleUrl: './admin-home.component.css'
 })
@@ -13,7 +16,7 @@ export class AdminHomeComponent {
   MoviesList: any[] = []
 
   constructor(private http: HttpClient){
-
+    this.getMovies();
   }
 
   getMovies(){
@@ -23,6 +26,12 @@ export class AdminHomeComponent {
     })
   }
 
+  // sending movie data to add price time 
 
+  movieId: any[] = []
+
+  addPriceTimeData(mID: any){
+    this.movieId = mID
+  }
 
 }

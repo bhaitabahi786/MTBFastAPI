@@ -1,1 +1,49 @@
 <p>create-plaform works!</p>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button" routerLink="/admin">Back to admin</button>
+    <!-- <button class="btn btn-primary me-md-2" type="button" routerLink="CM" >Add places</button> -->
+</div>
+<br/>
+
+
+
+
+  <form>
+    <div class="mb-3">
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Theater Name</span>
+            <input type="text" class="form-control" name="name" placeholder="Theater Name" aria-label="name" [(ngModel)]="place.name" >
+          </div>
+    </div>
+    <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"> Theater address </span>
+            <input type="text" class="form-control" name="address" placeholder="address" aria-label="address" [(ngModel)]="place.address" >
+          </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addPlace()" >Submit</button>
+  </form>
+
+  <br/>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (p of PlaceListS; track $index) {
+      <div class="col">
+          <div class="card h-100">
+  
+              <div class="card-body">
+  
+                  <h5 class="card-title"> {{ p.name }} </h5>
+                  <p class="card-text"> {{ p.address }} </p>
+
+              </div>
+          </div>
+  
+      </div>
+      }
+  
+  </div>
+
+
+
+

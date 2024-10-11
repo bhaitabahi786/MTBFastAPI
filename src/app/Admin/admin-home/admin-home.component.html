@@ -2,9 +2,10 @@
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button class="btn btn-primary me-md-2" type="button" (click)="getMovies()">get all movies</button>
-    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn btn-primary me-md-2" type="button" routerLink="CM" >Add movies</button>
+    <button class="btn btn-primary me-md-2" type="button" routerLink="CP" >Add places</button>
 </div>
-
+<br/>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @for (movie of MoviesList; track $index) {
     <div class="col">
@@ -16,10 +17,21 @@
                 <p class="card-text"> {{ movie.description }} </p>
 
             </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addPriceTimeData(movie)" >Button</button>
+              </div>
         </div>
-
+        
     </div>
     }
 
 </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <app-add-price-and-time [movieIdData]="movieId" ></app-add-price-and-time>
+
+  </div>
+
 

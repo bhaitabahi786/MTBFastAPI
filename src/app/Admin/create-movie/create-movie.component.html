@@ -1,1 +1,46 @@
 <p>create-movie works!</p>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button" routerLink="/admin">get all movies</button>
+    <button class="btn btn-primary me-md-2" type="button" routerLink="CM" >Add movies</button>
+</div>
+<br/>
+
+
+
+
+  <form>
+    <div class="mb-3">
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Movie Name</span>
+            <input type="text" class="form-control" name="moviename" placeholder="moviename" aria-label="moviename" [(ngModel)]="movie.name" >
+          </div>
+    </div>
+    <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">Movie Description</span>
+            <input type="text" class="form-control" name="description" placeholder="description" aria-label="description" [(ngModel)]="movie.description" >
+          </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addMovieS()" >Submit</button>
+  </form>
+
+  <br/>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (m of MoviesListS; track $index) {
+      <div class="col">
+          <div class="card h-100">
+  
+              <div class="card-body">
+  
+                  <h5 class="card-title"> {{ m.name }} </h5>
+                  <p class="card-text"> {{ m.description }} </p>
+
+              </div>
+          </div>
+  
+      </div>
+      }
+  
+  </div>
+
