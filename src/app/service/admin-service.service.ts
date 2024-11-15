@@ -42,6 +42,25 @@ export class AdminServiceService {
     }
   }
 
+  // add price time date
+
+  async addPTDataS(ptData: any){
+    console.log("service pt : ",ptData);
+
+    try{
+      const response = await this.http.post("http://127.0.0.1:8000/addPriceTime/", ptData).subscribe((res)=> {
+        // alert(res)
+      })
+      console.log('addPTDataS added successfully:', response);
+      // return response;
+    } catch (error) {
+      console.error('Error adding place:', error);
+      throw error;
+    }
+    
+
+  }
+
   // getMoviesS(){
   //   this.http.get("http://127.0.0.1:8000/allMovies/").subscribe((result:any)=>{
   //     this.MoviesListS = result;
@@ -58,6 +77,10 @@ export class AdminServiceService {
   
   getPlacesS(): Observable<any[]> {
     return this.http.get<any[]>("http://127.0.0.1:8000/allPlaces/");
+  }
+
+  getPriceTimeDataS(): Observable<any[]> {
+    return this.http.get<any[]>("http://127.0.0.1:8000/movies_with_pricetime_and_platform");
   }
   
 }

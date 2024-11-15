@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CreateMovieComponent } from "../create-movie/create-movie.component";
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AddPriceAndTimeComponent } from '../add-price-and-time/add-price-and-time.component';
+import { AdminServiceService } from '../../service/admin-service.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -14,9 +15,11 @@ import { AddPriceAndTimeComponent } from '../add-price-and-time/add-price-and-ti
 export class AdminHomeComponent {
 
   MoviesList: any[] = []
+  PriceTimeList: any[] = []
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,private adService: AdminServiceService){
     this.getMovies();
+    this.getPriceTimeData()
   }
 
   getMovies(){
@@ -24,6 +27,7 @@ export class AdminHomeComponent {
       this.MoviesList = result;
       console.log(this.MoviesList)
     })
+
   }
 
   // sending movie data to add price time 
@@ -32,6 +36,16 @@ export class AdminHomeComponent {
 
   addPriceTimeData(mID: any){
     this.movieId = mID
+  }
+
+  // getting list of all movies with price and time 
+
+  getPriceTimeData(){
+    this.adService.getPriceTimeDataS().subscribe((data) => {
+      console.log("data PT : ",data);
+      this.PriceTimeList = data
+    });
+ 
   }
 
 }

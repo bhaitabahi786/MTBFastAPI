@@ -16,9 +16,21 @@
                 <h5 class="card-title"> {{ movie.name }} </h5>
                 <p class="card-text"> {{ movie.description }} </p>
 
+                <!-- Details of movie wher its listed -->
+                <ul class="list-group">
+                    @for (pt of PriceTimeList; track $index) {
+                        @if (pt.movie_name == movie.name) {
+                            <li class="list-group-item"> {{ pt.date }} {{ pt.platform_name }} | {{ pt.address }} | {{ pt.price }} | {{ pt.time }} </li>
+                        }
+                        <!-- @else {
+                            <li class="list-group-item"> NAN </li>
+                        } -->
+                    }
+                  </ul>
+
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addPriceTimeData(movie)" >Button</button>
+                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addPriceTimeData(movie)" >Add Price & Time</button>
               </div>
         </div>
         
